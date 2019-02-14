@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="logger"
+		class="com.myspringlearnings.spring.autowiring.autowiring_name.Logger"
+		autowire="byName">
+
+	</bean>
+
+	<!-- Here the interface LogWriter defines ConsoleWriter and FileWriter, 
+		beans are of the same type, there is no way that spring could match them 
+		by type as they are of the type Interface, so autowiring by type is not feasible 
+		=============================================================================== 
+		autowiring byName : beans shld have the same name or id as the property to 
+		which they should be injected -->
+
+
+	<!-- note that consolewriter bean is now changed to consoleWriter to match 
+		the property to which the bean has to be injected -->
+	<bean id="consoleWriter"
+		class="com.myspringlearnings.spring.autowiring.autowiring_name.ConsoleWriter">
+	</bean>
+
+	<!-- Cannot create another consoleWriter as the bean names are unique ! 
+		<bean id="consoleWriter" class="com.myspringlearnings.spring.autowiring.autowiring_name.ConsoleWriter"> 
+		</bean> -->
+
+
+
+	<!-- either name or id can be matched with the property to be auto wired -->
+	<bean name="fileWriter"
+		class="com.myspringlearnings.spring.autowiring.autowiring_name.FileWriter">
+	</bean>
+
+
+
+</beans>

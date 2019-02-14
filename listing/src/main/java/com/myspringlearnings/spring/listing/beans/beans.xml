@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="fruitbasket" class="com.myspringlearnings.spring.listing.FruitBasket">
+	
+	<constructor-arg index="0" name="name" value="Dharu's basket"></constructor-arg>
+		<constructor-arg index="1" name="fruits">
+			<!-- <set> does not allow duplicates whereas <list> allows duplicates, 
+				change the below tag to see that in effect -->
+
+			<set>
+				<value>raspberry</value>
+				<value>mango</value>
+				<value>apple</value>
+				<value>kiwi</value>
+				<value>kiwi</value>
+			</set>
+		</constructor-arg>
+	</bean>
+</beans>

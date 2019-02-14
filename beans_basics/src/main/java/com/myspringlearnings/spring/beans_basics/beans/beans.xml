@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- uses factory-method -->
+	<bean id="person" class="com.myspringlearnings.spring.beans_basics.Person"
+		factory-method="getInstance" init-method="onCreate" destroy-method="onDestroy">
+
+		<constructor-arg index="0" name="id" value="1" type="int"></constructor-arg>
+		<constructor-arg index="1" name="name" value="dharani"
+			type="String">
+		</constructor-arg>
+
+
+		<property name="taxId" value="5"></property>
+		<property name="age">
+			<value>26</value>
+		</property>
+		<property name="address" ref="address"></property>
+
+	</bean>
+
+
+
+	<!-- uses factory-bean -->
+	<bean id="person1" class="com.myspringlearnings.spring.beans_basics.Person"
+		factory-method="createPerson" init-method="onCreate" destroy-method="onDestroy"
+		factory-bean="personfactory">
+
+		<constructor-arg index="0" name="id" value="2" type="int"></constructor-arg>
+		<constructor-arg index="1" name="name" value="Karthik"
+			type="String">
+		</constructor-arg>
+
+
+		<property name="taxId" value="10"></property>
+		<property name="age">
+			<value>29</value>
+		</property>
+		<property name="address" ref="address"></property>
+
+	</bean>
+
+
+
+	<bean id="address" class="com.myspringlearnings.spring.beans_basics.Address">
+		<constructor-arg index="0" type="String" value="Goddard Road"></constructor-arg>
+		<constructor-arg index="1" name="postcode" value="48195"
+			type="String">
+		</constructor-arg>
+	</bean>
+
+
+
+	<bean id="address1" class="com.myspringlearnings.spring.beans_basics.Address"
+		p:street="Nanjamma Naidu lay out" p:postcode="641010">
+
+	</bean>
+
+
+
+	<!-- external bean -->
+	<bean id="personfactory" class="com.myspringlearnings.spring.beans_basics.PersonFactory">
+	</bean>
+
+
+</beans>

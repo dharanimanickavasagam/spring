@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="jungle" class="com.myspringlearnings.spring.bean_lists.Jungle">
+		<property name="largest" ref="elephant"></property>
+		<property name="animals">
+			<list>
+				<ref bean="elephant" />
+				<ref bean="snake" />
+				<ref bean="bear" />
+			</list>
+
+		</property>
+		
+		<property name="king" >
+		<bean id="lion" class="com.myspringlearnings.spring.bean_lists.Animal">
+			<property name="name" value="igor"></property>
+			<property name="type" value="lion"></property>
+		</bean>
+		</property>
+	</bean>
+
+
+	<bean id="elephant" class="com.myspringlearnings.spring.bean_lists.Animal">
+		<property name="name" value="richard"></property>
+		<property name="type" value="elephant"></property>
+	</bean>
+
+
+	<bean id="snake" class="com.myspringlearnings.spring.bean_lists.Animal">
+		<property name="name" value="bob"></property>
+		<property name="type" value="snake"></property>
+	</bean>
+
+
+	<bean id="bear" class="com.myspringlearnings.spring.bean_lists.Animal">
+		<property name="name" value="paddington"></property>
+		<property name="type" value="bear"></property>
+	</bean>
+
+
+	<bean id="junglemap"
+		class="com.myspringlearnings.spring.bean_lists.JungleMap">
+
+	<property name="foods">
+		
+		<props>
+			<prop key="lion">flesh</prop>
+			<prop key="elephant">canes</prop>
+			<prop key="snake">frogs</prop>
+		</props>
+	</property>
+	</bean>
+	
+	<bean id="junglebeanmap"
+		class="com.myspringlearnings.spring.bean_lists.JungleBeanMap">
+	
+	<property name="animals">
+		<map>
+			<entry key="elephant" value-ref="elephant"></entry>
+			<entry key="snake" value-ref="snake"></entry>
+			<entry key="bear" value-ref="bear"></entry>
+		</map>
+	</property>
+	</bean>
+	
+</beans>

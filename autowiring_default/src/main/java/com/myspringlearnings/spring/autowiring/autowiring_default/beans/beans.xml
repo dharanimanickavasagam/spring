@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byType" default-autowire-candidates="consolewriter,filewriter">
+	<!-- default-autowire="constructor" -->
+
+
+	<bean id="logger"
+		class="com.myspringlearnings.spring.autowiring.autowiring_default.Logger">
+
+
+		<!-- the following is a normal setter based dependency injection technique 
+			the types are ConsoleWriter and FileWriter, beans are of different types 
+			if these different types of beans are autowired, its autowiring by type. 
+			====================================================================================== 
+			<property name="fileWriter" ref="filewriter"> </property> /// FileWriter 
+			<property name="consoleWriter" ref="consolewriter"> </property> /// ConsoleWriter 
+			====================================================================================== 
+			To autowire these beans of different types, set the autowire attribute of 
+			logger and choose autowire-byType and viola, check for the propery autowire 
+			====================================================================================== 
+			Why not to choose autowiring byType over other types of dependency injection??? 
+			1. big project having autowired beans may be confusing to track down !!! 
+			2. there should not be any ambiguity between the beans of the same type .. 
+			example : there should not be any other ConsoleWriter type beans ................. 
+			now either of consolewriter or consolewriter1 can be wired to logger , ambiguity 
+			<bean id="consolewriter1" class="com.myspringlearnings.spring.autowiring.autowiring_default.ConsoleWriter"> 
+			</bean> -->
+
+	</bean>
+
+
+	<bean id="consolewriter"
+		class="com.myspringlearnings.spring.autowiring.autowiring_default.ConsoleWriter">
+	</bean>
+
+
+	<!-- in order to allow multiple beans to work for the same class, use default-autowire-candidates -->
+	<bean id="consolewriter1"
+		class="com.myspringlearnings.spring.autowiring.autowiring_default.ConsoleWriter">
+	</bean>
+
+
+	<bean id="filewriter"
+		class="com.myspringlearnings.spring.autowiring.autowiring_default.FileWriter">
+	</bean>
+
+
+
+</beans>

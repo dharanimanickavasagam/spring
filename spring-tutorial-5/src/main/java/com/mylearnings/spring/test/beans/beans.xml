@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-init-method="init" default-destroy-method="destroy">
+
+
+
+	<bean id="person" class="com.mylearnings.spring.test.Person"
+		autowire-candidate="true" primary="false" init-method="onCreate"
+		destroy-method="onDestroy">
+		<constructor-arg value="7" index="0" type="int"></constructor-arg>
+		<constructor-arg value="dharani" index="1" type="String">
+		</constructor-arg>
+		<property name="taxId" value="10"></property>
+		<property name="age">
+			<!-- press control + space to get the list of tags -->
+			<value>26</value>
+		</property>
+
+		<property name="address" ref="address">
+		</property>
+	</bean>
+
+
+
+	<bean id="address" class="com.mylearnings.spring.test.Address">
+		<constructor-arg index="0" name="street" type="String"
+			value="Goddard Road ">
+		</constructor-arg>
+		<constructor-arg index="1" name="postcode" value="48195"
+			type="String">
+		</constructor-arg>
+	</bean>
+
+
+</beans>
