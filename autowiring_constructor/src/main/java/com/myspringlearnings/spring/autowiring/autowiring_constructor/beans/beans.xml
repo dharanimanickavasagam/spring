@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="logger"
+		class="com.myspringlearnings.spring.autowiring.autowiring_constructor.Logger"
+		autowire="constructor">
+	</bean>
+
+	<!-- Here the interface LogWriter defines ConsoleWriter and FileWriter, 
+		beans are of the same type, there is no way that spring could match them 
+		by type as they are of the type Interface, so autowiring by type is not feasible -->
+
+
+
+	<bean id="consolewriter"
+		class="com.myspringlearnings.spring.autowiring.autowiring_constructor.ConsoleWriter">
+	</bean>
+
+
+	<bean id="filewriter"
+		class="com.myspringlearnings.spring.autowiring.autowiring_constructor.FileWriter">
+	</bean>
+
+
+
+
+</beans>
