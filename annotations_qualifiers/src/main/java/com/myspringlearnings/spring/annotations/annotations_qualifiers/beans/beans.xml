@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+
+	<bean id="logger"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.Logger">
+	</bean>
+
+
+	<bean id="consolewriter"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.ConsoleWriter">
+	</bean>
+
+
+	<bean id="consolewriter1"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.ConsoleWriter">
+		<qualifier value="cw1"></qualifier>
+	</bean>
+
+
+	<bean id="filewriter"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.FileWriter">
+	
+	</bean>
+
+
+	<bean id="filewriter1"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.FileWriter"
+		autowire="default">
+		<qualifier value="fw1"></qualifier>
+	</bean>
+
+
+	<context:annotation-config type="ConsoleWriter"></context:annotation-config>
+	<context:annotation-config type="FileWriter"></context:annotation-config>
+
+
+	<bean id="resourcewriter"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.ResourceWriter">
+	
+	</bean>
+	
+	
+	<bean id="resourcewriter1"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.ResourceWriter">
+	</bean>
+	
+	
+	<bean id="injectwriter"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.InjectWriter">
+	</bean>
+	
+	
+	<bean id="injectwriter1"
+		class="com.myspringlearnings.spring.annotations.annotations_qualifiers.InjectWriter">
+	</bean>
+</beans>
