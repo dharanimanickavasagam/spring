@@ -1,0 +1,47 @@
+package com.myspringlearnings.spring.dao_pattern;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
+
+public class App {
+	public static void main(String[] args) {
+		System.out.println("Implementing DAO Pattern");
+
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"com/myspringlearnings/spring/dao_pattern/beans/beans.xml");
+
+		// We don't handle any exceptions manually
+		// Spring handles all exceptions when connecting with DB
+		// It wraps them in DataAcccessException - its a run time handler
+
+		
+		try {
+			OffersDAO offersDao = (OffersDAO) context.getBean("offersDao");
+
+			System.out.println("\nInserting few rows using Batch updates  ");
+			List<Offer> offers = new ArrayList<Offer>();
+
+			offers.add(new Offer(1,"phoebe", "phoebe@gh", "masseuse"));
+			offers.add(new Offer(2,"chandler", "chandler@gh", "job"));
+
+			int rvals[] = offersDao.create(offers);
+			for (int val : rvals) {
+				System.out.println(val);
+			}
+
+		} catch (CannotGetJdbcConnectionException e) {
+			System.out.println("cannot get database connection");
+		} catch (DataAccessException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getClass());
+		}
+
+		((ClassPathXmlApplicationContext) context).close();
+
+	}
+}
